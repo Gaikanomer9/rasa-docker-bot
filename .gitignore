@@ -1,0 +1,7 @@
+env
+env/
+.idea/
+.idea
+models
+__pycache__
+ngrok

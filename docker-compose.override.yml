@@ -1,0 +1,37 @@
+version: "3"
+services:
+  media-director:
+    image: media-director
+    build: Media_director
+    restart: always
+    env_file:
+      - variables.override.env
+    ports:
+      - "80:8080"
+    networks:
+      - bot-front
+      - bot-core
+
+
+  rasa-actions:
+    image: rasa-actions
+    build: Rasa_actions
+    restart: always
+    expose:
+      - "5055"
+    networks:
+      - bot-core
+
+  rasa-core:
+    image: core
+    build: Rasa_core
+    restart: always
+    expose:
+      - "5005"
+    networks:
+      - bot-core
+
+networks:
+  bot-front:
+  bot-core:
+

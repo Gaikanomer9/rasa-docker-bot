@@ -1,0 +1,48 @@
+version: "3"
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    env_file:
+      - variables.env
+    networks:
+      - bot-front
+
+  media-director:
+    image: media-director
+    build: Media_director
+    restart: always
+    env_file:
+      - variables.env
+    expose:
+      - "8080"
+    networks:
+      - bot-front
+      - bot-core
+
+
+  rasa-actions:
+    image: rasa-actions
+    build: Rasa_actions
+    restart: always
+    expose:
+      - "5055"
+    networks:
+      - bot-core
+
+  rasa-core:
+    image: core
+    build: Rasa_core
+    restart: always
+    expose:
+      - "5005"
+    networks:
+      - bot-core
+
+networks:
+  bot-front:
+  bot-core:
+

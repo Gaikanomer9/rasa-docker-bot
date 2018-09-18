@@ -1,0 +1,28 @@
+intents:
+  - hello
+  - mood_great
+  - mood_sad
+  - service_status
+
+actions:
+- utter_greet_user
+- utter_ask_mood
+- utter_happy
+- utter_cheer_up
+- action_get_status
+
+templates:
+
+  utter_greet_user:
+  - text: "Привет!"
+
+  utter_ask_mood:
+  - text: "Как дела?"
+
+  utter_happy:
+  - text: "Рад, что у тебя все хорошо"
+
+  utter_cheer_up:
+  - text: "Может это поднимет тебе настроение:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
