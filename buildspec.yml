@@ -31,4 +31,3 @@ artifacts:
     - imagedefinitions_director.json
     - imagedefinitions_core.json
     - imagedefinitions_actions.json
-    - imagedefinitions_http.json

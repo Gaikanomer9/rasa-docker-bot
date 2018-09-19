@@ -33,7 +33,7 @@ services:
     networks:
       - bot-core
 
- 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-core:
+  rasa-core:
     image: core
     build: Rasa_core
     restart: always
