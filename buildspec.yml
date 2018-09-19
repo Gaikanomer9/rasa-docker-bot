@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Login to Amazon ECR
+      - $(aws ecr get-login --no-include-email --region eu-central-1)
+    finally:
+      - echo Couldnt login 
+  build:
+    commands:
+      - echo Building images
+      - docker build -t media-director Media_director
+      - docker tag media-director:latest 670104568736.dkr.ecr.eu-central-1.amazonaws.com/media-director:latest
+      - docker build -t rasa-actions Rasa_actions
+      - docker tag rasa-actions:latest 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-actions:latest
+      - docker build -t rasa-core Rasa_core
+      - docker tag rasa-core:latest 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-core:latest
+      - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-core:latest
+    finally:
+      - echo Couldnt build
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/media-director:latest
+      - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-actions:latest
+      - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-core:latest
+      - echo Build completed on `date`
