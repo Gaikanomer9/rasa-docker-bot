@@ -26,3 +26,5 @@ phases:
       - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-actions:latest
       - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-core:latest
       - echo Build completed on `date`
+artifacts:
+  files: imagedefinitions.json
