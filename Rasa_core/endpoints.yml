@@ -1,2 +1,2 @@
 action_endpoint:
-  url: "http://rasa-actions:5055/webhook"
+  url: "http://rasa-actions.local:5055/webhook"

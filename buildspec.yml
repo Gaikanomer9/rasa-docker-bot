@@ -25,6 +25,7 @@ phases:
       - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/media-director:latest
       - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-actions:latest
       - docker push 670104568736.dkr.ecr.eu-central-1.amazonaws.com/rasa-core:latest
+      - aws ecs update-service --service my-http-service
       - echo Build completed on `date`
 artifacts:
   files:
