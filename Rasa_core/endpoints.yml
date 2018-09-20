@@ -1,2 +1,2 @@
 action_endpoint:
-  url: "http://demo-bot.support-selectel.space:5055/webhook"
+  url: "http://${ACTION_HOST}:5055/webhook"
