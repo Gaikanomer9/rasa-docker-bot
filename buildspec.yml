@@ -10,20 +10,20 @@ phases:
     commands:
       - echo Building images
       - docker build -t media-director Media_director
-      - docker tag media-director:latest $(ECR_HOST)/media-director:latest
+      - docker tag media-director:latest $ECR_HOST/media-director:latest
       - docker build -t rasa-actions Rasa_actions
-      - docker tag rasa-actions:latest $(ECR_HOST)/rasa-actions:latest
+      - docker tag rasa-actions:latest $ECR_HOST/rasa-actions:latest
       - docker build -t rasa-core Rasa_core
-      - docker tag rasa-core:latest $(ECR_HOST)/rasa-core:latest
-      - docker push $(ECR_HOST)/rasa-core:latest
+      - docker tag rasa-core:latest $ECR_HOST/rasa-core:latest
+      - docker push $ECR_HOST/rasa-core:latest
     finally:
       - echo Couldnt build
   post_build:
     commands:
       - echo Entered the post_build phase...
-      - docker push $(ECR_HOST)/media-director:latest
-      - docker push $(ECR_HOST)/rasa-actions:latest
-      - docker push $(ECR_HOST)/rasa-core:latest
+      - docker push $ECR_HOST/media-director:latest
+      - docker push $ECR_HOST/rasa-actions:latest
+      - docker push $ECR_HOST/rasa-core:latest
       - echo Build completed on `date`
 artifacts:
   files:
