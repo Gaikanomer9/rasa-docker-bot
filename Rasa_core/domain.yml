@@ -14,7 +14,7 @@ actions:
 templates:
 
   utter_greet_user:
-  - text: "Привет!"
+  - text: "Привет, слушатели вебинара!"
 
   utter_ask_mood:
   - text: "Как дела?"
