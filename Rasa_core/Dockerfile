@@ -12,4 +12,4 @@ RUN python -m rasa_core.train -s data/stories.md -d domain.yml -o models/dialogu
 
 EXPOSE 5005
 
-CMD python -m rasa_core.run --enable_api -d models/dialogue -u models/nlu/current -o out.log --endpoints endpoints.yml
+CMD ["/bin/bash", "entry.sh"]
